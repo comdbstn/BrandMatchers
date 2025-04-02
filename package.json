@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "prebuild": "if [ -e project-bolt-sb1-vcrromss.zip ] && [ ! -d src ]; then mkdir -p extracted && unzip -o project-bolt-sb1-vcrromss.zip -d extracted && cp -r extracted/project/src .; fi",
+    "build": "npm run prebuild && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
